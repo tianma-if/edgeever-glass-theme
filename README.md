@@ -1,23 +1,25 @@
 # EdgeEver Glass
 
-一个为 [EdgeEver](https://github.com/tianma-if/edgeever) 制作的 Microsoft Fluent 风格外观插件。它参考 Windows 11 的材质层级，以 Mica 作为稳定的应用底层、以带细微噪点的 Acrylic 呈现弹窗和菜单，并同时适配浅色与深色模式。
+一个为 [EdgeEver](https://github.com/tianma-if/edgeever) 打造的通透毛玻璃（Liquid Glass & Glassmorphism）外观插件。它采用多层极光流光底色、高透光率与光学折射滤镜（`saturate 180%`）、物理级边缘内高光和半透明晶莹描边，完美适配浅色与深色模式。
 
 ## 特性
 
-- Fluent 风格的 Mica 主界面与 Acrylic 浮层
-- 真实的 `backdrop-filter`、材质噪点、细描边和双层阴影
-- Segoe UI Variable 字体栈与 Windows 11 式圆角
-- 跟随 EdgeEver 的浅色 / 深色模式
-- 不读取笔记、不访问网络，声明权限为空
-- 禁用插件后立即恢复原始样式
-- 对不支持背景模糊或启用“减少透明度”的设备提供高对比度回退
-- 支持 EdgeEver Web 与桌面端
+- **极光流光底色**：浅色冰晶四元光晕与暗夜星云极光，提供充沛的光学折射色彩源
+- **高通透毛玻璃材质**：0.45~0.60 精准透光率结合 `backdrop-filter: blur() saturate()`
+- **物理级边缘内高光**：面板与浮层注入顶部 1px 晶莹内发光与立体高光边缘
+- **全套玻璃化控件与浮层**：适配弹窗、菜单、搜索/输入框、按钮 Hover 微动效与细条毛玻璃滚动条
+- **极致文字可读性**：采用 Slate-900 / Slate-50 高对比度色阶与平滑字体抗锯齿
+- **跟随 EdgeEver 主题模式**：自适应浅色与深色模式
+- **安全纯粹**：不读取笔记、不访问网络，声明权限为空
+- **即开即关**：禁用插件后立即恢复原始样式
+- **无障碍回退**：对不支持背景模糊或启用“减少透明度”的环境提供清晰的高对比度回退
+- **跨平台适配**：支持 EdgeEver Web 与桌面端
 
 ## 安装
 
 ### 从 GitHub 仓库安装
 
-发布首个 GitHub Release 后，在 EdgeEver 的「插件市场」页面粘贴仓库地址：
+在 EdgeEver 的「插件市场」页面粘贴仓库地址：
 
 ```text
 https://github.com/tianma-if/edgeever-glass-theme
@@ -60,13 +62,13 @@ npm run package
 
 `npm run package` 会把可发布文件复制到 `dist/`，并生成 `SHA256SUMS`。
 
-视觉参数集中在 `styles.css` 顶部的 CSS 变量中。调整透明度时，请同步检查浅色和深色变量；透明度太低会牺牲文字对比度，太高则会看不出背景模糊。
+视觉参数集中在 `styles.css` 顶部的 CSS 变量中。调整透明度时，请同步检查浅色和深色变量；透明度太低会牺牲文字对比度，太高则会削弱通透感。
 
 ## 发布
 
 1. 同时更新 `manifest.json` 与 `package.json` 中的版本号。
 2. 运行 `npm run check`。
-3. 创建与版本一致的标签，例如 `v0.2.1`。
+3. 创建与版本一致的标签，例如 `v0.3.0`。
 4. 推送标签；GitHub Actions 会创建 Release 并附加安装文件。
 
 ## 为什么不是纯主题包？

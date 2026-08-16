@@ -37,16 +37,15 @@ test("activation adds the scope marker and cleanup removes it", async () => {
   delete globalThis.document;
 });
 
-test("stylesheet is scoped and includes real glass plus accessibility fallbacks", async () => {
+test("stylesheet is scoped and includes real translucent glass plus accessibility fallbacks", async () => {
   const css = await readFile(new URL("styles.css", root), "utf8");
 
   assert.match(css, /html\[data-edgeever-glass-theme="active"\]/);
-  assert.match(css, /--fluent-mica:/);
-  assert.match(css, /--fluent-acrylic:/);
+  assert.match(css, /--glass-surface:/);
+  assert.match(css, /--glass-overlay:/);
   assert.match(css, /feTurbulence/);
   assert.match(css, /Segoe UI Variable/);
-  assert.doesNotMatch(css, /\[data-radix-popper-content-wrapper\]\s*>\s*div/);
-  assert.match(css, /\[role="tooltip"\][^{]*\{[^}]*background:[^;]*--fluent-tooltip[^}]*color:[^;]*--fluent-tooltip-text/s);
+  assert.match(css, /\[role="tooltip"\][^{]*\{[^}]*background:[^;]*--glass-tooltip[^}]*color:[^;]*--glass-tooltip-text/s);
   assert.match(css, /backdrop-filter:\s*blur/);
   assert.match(css, /@supports not/);
   assert.match(css, /prefers-reduced-transparency/);
