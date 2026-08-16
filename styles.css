@@ -1,186 +1,240 @@
-/* EdgeEver Glass
- * The selector is activated by main.js, so disabling the plugin cleanly
- * restores EdgeEver's original appearance.
+/* EdgeEver Glass — Fluent material edition
+ *
+ * Stable panes use a restrained Mica-like tint. Transient surfaces use the
+ * more translucent Acrylic recipe: backdrop + blur + tint + fine noise.
+ * main.js supplies the root scope so disabling the plugin restores EdgeEver.
  */
 
 html[data-edgeever-glass-theme="active"] {
-  --glass-bg: #dcecff;
-  --glass-surface: rgba(255, 255, 255, 0.62);
-  --glass-surface-strong: rgba(255, 255, 255, 0.78);
-  --glass-surface-soft: rgba(241, 247, 255, 0.46);
-  --glass-border: rgba(255, 255, 255, 0.66);
-  --glass-divider: rgba(100, 116, 139, 0.18);
-  --glass-text: #152238;
-  --glass-text-muted: #59677b;
-  --glass-accent: #0f9f78;
-  --glass-accent-soft: rgba(16, 185, 129, 0.14);
-  --glass-shadow: 0 16px 44px rgba(50, 75, 110, 0.13);
-  --glass-blur: 22px;
-  --glass-radius: 14px;
+  --fluent-wallpaper: #d9e7f7;
+  --fluent-mica: rgba(243, 243, 243, 0.88);
+  --fluent-mica-alt: rgba(235, 235, 235, 0.84);
+  --fluent-layer: rgba(255, 255, 255, 0.66);
+  --fluent-layer-hover: rgba(255, 255, 255, 0.78);
+  --fluent-acrylic: rgba(252, 252, 252, 0.76);
+  --fluent-acrylic-solid: #f9f9f9;
+  --fluent-control: rgba(255, 255, 255, 0.7);
+  --fluent-control-hover: rgba(255, 255, 255, 0.88);
+  --fluent-control-active: rgba(249, 249, 249, 0.62);
+  --fluent-stroke: rgba(0, 0, 0, 0.0578);
+  --fluent-stroke-strong: rgba(0, 0, 0, 0.12);
+  --fluent-divider: rgba(0, 0, 0, 0.0803);
+  --fluent-text: #1a1a1a;
+  --fluent-text-secondary: rgba(0, 0, 0, 0.6063);
+  --fluent-accent: #0f7b5d;
+  --fluent-accent-fill: #0f7b5d;
+  --fluent-accent-subtle: rgba(15, 123, 93, 0.12);
+  --fluent-tooltip: #2b2b2b;
+  --fluent-tooltip-text: #ffffff;
+  --fluent-shadow-flyout:
+    0 8px 16px rgba(0, 0, 0, 0.14),
+    0 0 2px rgba(0, 0, 0, 0.12);
+  --fluent-shadow-dialog:
+    0 32px 64px rgba(0, 0, 0, 0.19),
+    0 2px 8px rgba(0, 0, 0, 0.1);
+  --fluent-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
+  --fluent-radius-control: 4px;
+  --fluent-radius-card: 8px;
+  --fluent-radius-overlay: 12px;
   color-scheme: light;
+  font-family: "Segoe UI Variable Text", "Segoe UI Variable", "Segoe UI", system-ui, sans-serif;
 }
 
 html.dark[data-edgeever-glass-theme="active"] {
-  --glass-bg: #0c1424;
-  --glass-surface: rgba(18, 28, 47, 0.64);
-  --glass-surface-strong: rgba(22, 34, 55, 0.8);
-  --glass-surface-soft: rgba(36, 51, 75, 0.48);
-  --glass-border: rgba(255, 255, 255, 0.12);
-  --glass-divider: rgba(203, 213, 225, 0.13);
-  --glass-text: #edf4ff;
-  --glass-text-muted: #9fadc1;
-  --glass-accent: #5ee0b2;
-  --glass-accent-soft: rgba(52, 211, 153, 0.16);
-  --glass-shadow: 0 18px 54px rgba(0, 0, 0, 0.28);
+  --fluent-wallpaper: #101820;
+  --fluent-mica: rgba(32, 32, 32, 0.9);
+  --fluent-mica-alt: rgba(39, 39, 39, 0.86);
+  --fluent-layer: rgba(255, 255, 255, 0.052);
+  --fluent-layer-hover: rgba(255, 255, 255, 0.0837);
+  --fluent-acrylic: rgba(44, 44, 44, 0.78);
+  --fluent-acrylic-solid: #2c2c2c;
+  --fluent-control: rgba(255, 255, 255, 0.0605);
+  --fluent-control-hover: rgba(255, 255, 255, 0.0837);
+  --fluent-control-active: rgba(255, 255, 255, 0.0326);
+  --fluent-stroke: rgba(255, 255, 255, 0.0837);
+  --fluent-stroke-strong: rgba(255, 255, 255, 0.16);
+  --fluent-divider: rgba(255, 255, 255, 0.0837);
+  --fluent-text: #ffffff;
+  --fluent-text-secondary: rgba(255, 255, 255, 0.786);
+  --fluent-accent: #5fd6b1;
+  --fluent-accent-fill: #4cc99f;
+  --fluent-accent-subtle: rgba(76, 201, 159, 0.14);
+  --fluent-shadow-flyout:
+    0 8px 16px rgba(0, 0, 0, 0.26),
+    0 0 2px rgba(0, 0, 0, 0.24);
+  --fluent-shadow-dialog:
+    0 32px 64px rgba(0, 0, 0, 0.42),
+    0 2px 8px rgba(0, 0, 0, 0.26);
   color-scheme: dark;
 }
 
+/* Wallpaper-tinted base layer, analogous to the Mica system backdrop. */
 html[data-edgeever-glass-theme="active"] body {
-  background-color: var(--glass-bg) !important;
+  background-color: var(--fluent-wallpaper) !important;
   background-image:
-    radial-gradient(circle at 12% 16%, rgba(105, 185, 255, 0.52), transparent 34%),
-    radial-gradient(circle at 84% 12%, rgba(121, 244, 196, 0.38), transparent 30%),
-    radial-gradient(circle at 78% 88%, rgba(172, 136, 255, 0.34), transparent 34%),
-    linear-gradient(145deg, rgba(255, 255, 255, 0.6), rgba(221, 235, 255, 0.2)) !important;
+    radial-gradient(circle at 12% 4%, rgba(85, 156, 214, 0.24), transparent 38%),
+    radial-gradient(circle at 90% 100%, rgba(68, 171, 139, 0.18), transparent 34%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.24), transparent 58%) !important;
   background-attachment: fixed !important;
-  color: var(--glass-text);
+  color: var(--fluent-text);
 }
 
 html.dark[data-edgeever-glass-theme="active"] body {
   background-image:
-    radial-gradient(circle at 10% 14%, rgba(36, 126, 199, 0.34), transparent 34%),
-    radial-gradient(circle at 86% 10%, rgba(29, 174, 137, 0.22), transparent 30%),
-    radial-gradient(circle at 78% 88%, rgba(108, 77, 192, 0.25), transparent 34%),
-    linear-gradient(145deg, rgba(5, 12, 24, 0.82), rgba(15, 24, 42, 0.72)) !important;
+    radial-gradient(circle at 10% 0%, rgba(30, 98, 146, 0.23), transparent 40%),
+    radial-gradient(circle at 92% 100%, rgba(23, 111, 87, 0.16), transparent 35%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.025), transparent 55%) !important;
 }
 
-/* Primary panes and cards */
-html[data-edgeever-glass-theme="active"] :is(.bg-white, .bg-slate-50, .bg-slate-50\/50, .bg-slate-50\/60) {
-  background-color: var(--glass-surface) !important;
-  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(145%);
-  backdrop-filter: blur(var(--glass-blur)) saturate(145%);
+/* Main application panes are Mica, not stacked Acrylic. */
+html[data-edgeever-glass-theme="active"] :is(.bg-white, .bg-slate-50\/50, .bg-slate-50\/60) {
+  background-color: var(--fluent-mica) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(110%);
+  backdrop-filter: blur(18px) saturate(110%);
 }
 
-html[data-edgeever-glass-theme="active"] :is(.bg-slate-100, .bg-slate-100\/80, .bg-slate-200\/50) {
-  background-color: var(--glass-surface-soft) !important;
-  -webkit-backdrop-filter: blur(14px) saturate(130%);
-  backdrop-filter: blur(14px) saturate(130%);
+html[data-edgeever-glass-theme="active"] :is(.bg-slate-50, .bg-slate-100, .bg-slate-100\/80, .bg-slate-200\/50) {
+  background-color: var(--fluent-mica-alt) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(108%);
+  backdrop-filter: blur(18px) saturate(108%);
 }
 
-/* Floating surfaces: dialogs, menus, popovers and mobile sheets */
+/* Cards and embedded layers use Fluent's subtle fill hierarchy. */
+html[data-edgeever-glass-theme="active"] :is(article, .rounded-lg, .rounded-xl, .rounded-2xl) {
+  border-color: var(--fluent-stroke) !important;
+}
+
+html[data-edgeever-glass-theme="active"] article:is(.bg-white, .bg-slate-50, .bg-slate-50\/50) {
+  background-color: var(--fluent-layer) !important;
+  border-radius: var(--fluent-radius-card);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+/* Acrylic is reserved for transient UI: flyouts, menus, dialogs and sheets. */
 html[data-edgeever-glass-theme="active"] :is(
   [role="dialog"],
   [role="menu"],
   [role="listbox"],
-  [data-radix-popper-content-wrapper] > div,
   .mobile-editor-notebook-sheet
 ) {
-  background-color: var(--glass-surface-strong) !important;
-  border-color: var(--glass-border) !important;
-  box-shadow: var(--glass-shadow) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(155%);
-  backdrop-filter: blur(28px) saturate(155%);
+  background-color: var(--fluent-acrylic) !important;
+  background-image: var(--fluent-noise) !important;
+  background-repeat: repeat !important;
+  border: 1px solid var(--fluent-stroke-strong) !important;
+  border-radius: var(--fluent-radius-overlay) !important;
+  box-shadow: var(--fluent-shadow-flyout) !important;
+  -webkit-backdrop-filter: blur(30px) saturate(125%);
+  backdrop-filter: blur(30px) saturate(125%);
 }
 
-/* Preserve separation on the three-pane desktop layout. */
-html[data-edgeever-glass-theme="active"] :is(
-  .border-slate-100,
-  .border-slate-200,
-  .border-slate-300
-) {
-  border-color: var(--glass-divider) !important;
+html[data-edgeever-glass-theme="active"] [role="dialog"] {
+  box-shadow: var(--fluent-shadow-dialog) !important;
 }
 
-html[data-edgeever-glass-theme="active"] :is(
-  .divide-slate-100,
-  .divide-slate-200
-) > :not([hidden]) ~ :not([hidden]) {
-  border-color: var(--glass-divider) !important;
+/* Tooltips use an opaque inverse surface in Fluent. Keep them separate from
+ * Acrylic poppers so EdgeEver's white tooltip text never lands on a pale fill. */
+html[data-edgeever-glass-theme="active"] [role="tooltip"] {
+  background: var(--fluent-tooltip) !important;
+  color: var(--fluent-tooltip-text) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: var(--fluent-radius-control) !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
 }
 
-html[data-edgeever-glass-theme="active"] :is(
-  .text-slate-700,
-  .text-slate-800,
-  .text-slate-900,
-  .text-slate-950
-) {
-  color: var(--glass-text) !important;
+/* Fluent controls have quiet fills, 4 px radii, and a stronger bottom edge. */
+html[data-edgeever-glass-theme="active"] :is(input, textarea, select):not([class*="bg-slate-950"]) {
+  background-color: var(--fluent-control) !important;
+  border-color: var(--fluent-stroke) !important;
+  border-bottom-color: var(--fluent-stroke-strong) !important;
+  border-radius: var(--fluent-radius-control) !important;
+  color: var(--fluent-text) !important;
+  caret-color: var(--fluent-accent-fill);
 }
 
-html[data-edgeever-glass-theme="active"] :is(
-  .text-slate-400,
-  .text-slate-500,
-  .text-slate-600
-) {
-  color: var(--glass-text-muted) !important;
+html[data-edgeever-glass-theme="active"] :is(input, textarea, select):not([class*="bg-slate-950"]):hover {
+  background-color: var(--fluent-control-hover) !important;
 }
 
-html[data-edgeever-glass-theme="active"] :is(
-  .text-emerald-600,
-  .text-emerald-700,
-  .text-emerald-800
-) {
-  color: var(--glass-accent) !important;
+html[data-edgeever-glass-theme="active"] :is(input, textarea, select):not([class*="bg-slate-950"]):focus {
+  border-bottom-color: var(--fluent-accent-fill) !important;
+  box-shadow: inset 0 -1px 0 var(--fluent-accent-fill);
 }
 
-html[data-edgeever-glass-theme="active"] :is(
-  .bg-emerald-50,
-  .bg-emerald-50\/50,
-  .bg-emerald-100
-) {
-  background-color: var(--glass-accent-soft) !important;
+html[data-edgeever-glass-theme="active"] button:not([class*="bg-emerald"]):not([class*="bg-rose"]):hover,
+html[data-edgeever-glass-theme="active"] [role="menuitem"]:hover {
+  background-color: var(--fluent-control-hover) !important;
 }
 
-/* Inputs stay legible while still reflecting the background. */
-html[data-edgeever-glass-theme="active"] :is(input, textarea, [contenteditable="true"]) {
-  caret-color: var(--glass-accent);
+html[data-edgeever-glass-theme="active"] button:not([class*="bg-emerald"]):not([class*="bg-rose"]):active,
+html[data-edgeever-glass-theme="active"] [role="menuitem"]:active {
+  background-color: var(--fluent-control-active) !important;
 }
 
-html[data-edgeever-glass-theme="active"] :is(input, textarea):not([class*="bg-slate-950"]) {
-  background-color: rgba(255, 255, 255, 0.24) !important;
-  border-color: var(--glass-divider) !important;
+/* Dividers and typography map the Tailwind surfaces to Fluent neutral tokens. */
+html[data-edgeever-glass-theme="active"] :is(.border-slate-100, .border-slate-200, .border-slate-300) {
+  border-color: var(--fluent-divider) !important;
 }
 
-html.dark[data-edgeever-glass-theme="active"] :is(input, textarea):not([class*="bg-slate-950"]) {
-  background-color: rgba(8, 15, 28, 0.26) !important;
+html[data-edgeever-glass-theme="active"] :is(.divide-slate-100, .divide-slate-200) > :not([hidden]) ~ :not([hidden]) {
+  border-color: var(--fluent-divider) !important;
 }
 
-/* A small polish pass for surfaces that already opt into rounded corners. */
-html[data-edgeever-glass-theme="active"] :is(.rounded-lg, .rounded-xl, .rounded-2xl) {
-  border-color: var(--glass-border);
+html[data-edgeever-glass-theme="active"] :is(.text-slate-700, .text-slate-800, .text-slate-900, .text-slate-950) {
+  color: var(--fluent-text) !important;
 }
 
+html[data-edgeever-glass-theme="active"] :is(.text-slate-400, .text-slate-500, .text-slate-600) {
+  color: var(--fluent-text-secondary) !important;
+}
+
+html[data-edgeever-glass-theme="active"] :is(.text-emerald-600, .text-emerald-700, .text-emerald-800) {
+  color: var(--fluent-accent) !important;
+}
+
+html[data-edgeever-glass-theme="active"] :is(.bg-emerald-50, .bg-emerald-50\/50, .bg-emerald-100) {
+  background-color: var(--fluent-accent-subtle) !important;
+}
+
+html[data-edgeever-glass-theme="active"] :is(.bg-emerald-600, .bg-emerald-700) {
+  background-color: var(--fluent-accent-fill) !important;
+}
+
+/* Solid material fallbacks mirror Windows transparency accessibility behavior. */
 @supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
   html[data-edgeever-glass-theme="active"] {
-    --glass-surface: rgba(248, 251, 255, 0.94);
-    --glass-surface-strong: rgba(248, 251, 255, 0.98);
-    --glass-surface-soft: rgba(238, 244, 252, 0.92);
+    --fluent-mica: #f3f3f3;
+    --fluent-mica-alt: #ebebeb;
+    --fluent-acrylic: var(--fluent-acrylic-solid);
   }
 
   html.dark[data-edgeever-glass-theme="active"] {
-    --glass-surface: rgba(18, 28, 47, 0.95);
-    --glass-surface-strong: rgba(22, 34, 55, 0.98);
-    --glass-surface-soft: rgba(36, 51, 75, 0.92);
+    --fluent-mica: #202020;
+    --fluent-mica-alt: #272727;
   }
 }
 
-@media (prefers-reduced-transparency: reduce) {
+@media (prefers-reduced-transparency: reduce), (forced-colors: active) {
   html[data-edgeever-glass-theme="active"] {
-    --glass-surface: rgba(248, 251, 255, 0.96);
-    --glass-surface-strong: rgba(248, 251, 255, 0.99);
-    --glass-surface-soft: rgba(238, 244, 252, 0.94);
-    --glass-blur: 0px;
+    --fluent-mica: #f3f3f3;
+    --fluent-mica-alt: #ebebeb;
+    --fluent-acrylic: #f9f9f9;
+    --fluent-layer: #ffffff;
   }
 
   html.dark[data-edgeever-glass-theme="active"] {
-    --glass-surface: rgba(18, 28, 47, 0.97);
-    --glass-surface-strong: rgba(22, 34, 55, 0.99);
-    --glass-surface-soft: rgba(36, 51, 75, 0.95);
+    --fluent-mica: #202020;
+    --fluent-mica-alt: #272727;
+    --fluent-acrylic: #2c2c2c;
+    --fluent-layer: #2b2b2b;
   }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  html[data-edgeever-glass-theme="active"] :is(button, a, [role="menuitem"]) {
-    transition-duration: 160ms;
+  html[data-edgeever-glass-theme="active"] :is(button, a, [role="menuitem"], input, textarea) {
+    transition-duration: 100ms;
+    transition-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
   }
 }

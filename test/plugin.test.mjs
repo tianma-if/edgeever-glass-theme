@@ -41,6 +41,12 @@ test("stylesheet is scoped and includes real glass plus accessibility fallbacks"
   const css = await readFile(new URL("styles.css", root), "utf8");
 
   assert.match(css, /html\[data-edgeever-glass-theme="active"\]/);
+  assert.match(css, /--fluent-mica:/);
+  assert.match(css, /--fluent-acrylic:/);
+  assert.match(css, /feTurbulence/);
+  assert.match(css, /Segoe UI Variable/);
+  assert.doesNotMatch(css, /\[data-radix-popper-content-wrapper\]\s*>\s*div/);
+  assert.match(css, /\[role="tooltip"\][^{]*\{[^}]*background:[^;]*--fluent-tooltip[^}]*color:[^;]*--fluent-tooltip-text/s);
   assert.match(css, /backdrop-filter:\s*blur/);
   assert.match(css, /@supports not/);
   assert.match(css, /prefers-reduced-transparency/);

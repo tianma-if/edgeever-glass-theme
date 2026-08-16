@@ -1,10 +1,12 @@
 # EdgeEver Glass
 
-一个为 [EdgeEver](https://github.com/tianma-if/edgeever) 制作的毛玻璃外观插件。它为笔记列表、编辑器、设置页、弹窗和菜单提供半透明、背景模糊和轻微增色效果，并同时适配浅色与深色模式。
+一个为 [EdgeEver](https://github.com/tianma-if/edgeever) 制作的 Microsoft Fluent 风格外观插件。它参考 Windows 11 的材质层级，以 Mica 作为稳定的应用底层、以带细微噪点的 Acrylic 呈现弹窗和菜单，并同时适配浅色与深色模式。
 
 ## 特性
 
-- 真实的 `backdrop-filter` 毛玻璃，而不只是半透明颜色
+- Fluent 风格的 Mica 主界面与 Acrylic 浮层
+- 真实的 `backdrop-filter`、材质噪点、细描边和双层阴影
+- Segoe UI Variable 字体栈与 Windows 11 式圆角
 - 跟随 EdgeEver 的浅色 / 深色模式
 - 不读取笔记、不访问网络，声明权限为空
 - 禁用插件后立即恢复原始样式
@@ -64,7 +66,7 @@ npm run package
 
 1. 同时更新 `manifest.json` 与 `package.json` 中的版本号。
 2. 运行 `npm run check`。
-3. 创建与版本一致的标签，例如 `v0.1.0`。
+3. 创建与版本一致的标签，例如 `v0.2.1`。
 4. 推送标签；GitHub Actions 会创建 Release 并附加安装文件。
 
 ## 为什么不是纯主题包？
