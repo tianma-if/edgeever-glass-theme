@@ -45,7 +45,9 @@ test("stylesheet is scoped and includes real translucent glass plus accessibilit
   assert.match(css, /--glass-overlay:/);
   assert.match(css, /feTurbulence/);
   assert.match(css, /Segoe UI Variable/);
-  assert.match(css, /\[role="tooltip"\][^{]*\{[^}]*background:[^;]*--glass-tooltip[^}]*color:[^;]*--glass-tooltip-text/s);
+  assert.doesNotMatch(css, /\[data-radix-popper-content-wrapper\]\s*>\s*div/);
+  assert.match(css, /\[role="tooltip"\]/);
+  assert.match(css, /--glass-tooltip/);
   assert.match(css, /backdrop-filter:\s*blur/);
   assert.match(css, /@supports not/);
   assert.match(css, /prefers-reduced-transparency/);

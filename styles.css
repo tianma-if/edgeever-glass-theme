@@ -29,7 +29,7 @@ html[data-edgeever-glass-theme="active"] {
   --glass-accent-fill: #10b981;
   --glass-accent-subtle: rgba(16, 185, 129, 0.16);
   --glass-accent-glow: rgba(16, 185, 129, 0.28);
-  --glass-tooltip: rgba(15, 23, 42, 0.92);
+  --glass-tooltip: rgba(15, 23, 42, 0.94);
   --glass-tooltip-text: #ffffff;
   --glass-shadow-panel:
     0 8px 32px 0 rgba(31, 38, 135, 0.08),
@@ -166,12 +166,14 @@ html.dark[data-edgeever-glass-theme="active"] article:is(.bg-white, .bg-slate-50
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.38), inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.16);
 }
 
-/* Floating Overlays: Flyouts, Menus, Dialogs, Dropdowns, Sheets */
+/* Floating Overlays: Flyouts, Menus, Dialogs, Dropdowns, Sheets (Excludes Tooltips) */
 html[data-edgeever-glass-theme="active"] :is(
   [role="dialog"],
   [role="menu"],
   [role="listbox"],
-  [data-radix-popper-content-wrapper] > div,
+  [data-radix-popover-content],
+  [data-radix-dropdown-menu-content],
+  [data-radix-select-content],
   .mobile-editor-notebook-sheet
 ) {
   background-color: var(--glass-overlay) !important;
@@ -188,15 +190,31 @@ html[data-edgeever-glass-theme="active"] [role="dialog"] {
   box-shadow: var(--glass-shadow-dialog) !important;
 }
 
-/* Crisp & Clear Tooltips */
-html[data-edgeever-glass-theme="active"] [role="tooltip"] {
-  background: var(--glass-tooltip) !important;
+/* Tooltips: Dedicated high-contrast opaque/translucent dark pill with crystal clarity.
+ * Separated from pale glass overlays so white tooltip text remains crisp and visible. */
+html[data-edgeever-glass-theme="active"] :is(
+  [role="tooltip"],
+  [data-radix-tooltip-content],
+  [data-radix-popper-content-wrapper] [role="tooltip"],
+  .tooltip
+) {
+  background-color: var(--glass-tooltip) !important;
   color: var(--glass-tooltip-text) !important;
   border: 1px solid rgba(255, 255, 255, 0.14) !important;
   border-radius: var(--glass-radius-control) !important;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.30) !important;
   -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
+  z-index: 9999 !important;
+}
+
+html[data-edgeever-glass-theme="active"] :is(
+  [role="tooltip"],
+  [data-radix-tooltip-content],
+  [data-radix-popper-content-wrapper] [role="tooltip"],
+  .tooltip
+) :is(span, p, div, label, text, *) {
+  color: var(--glass-tooltip-text) !important;
 }
 
 /* Glass Controls: Input, Textarea, Select */
