@@ -1,0 +1,13 @@
+{
+  "name": "edgeever-glass-theme",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node --check main.js && node --test",
+    "package": "node scripts/package-release.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
